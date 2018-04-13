@@ -173,7 +173,7 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit\Framework\TestCase
             ),
         );
         $prototype = new Zend_Server_Method_Prototype($options);
-        $test = $prototype->toArray();
+        $test      = $prototype->toArray();
         $this->assertSame($options, $test);
     }
 }

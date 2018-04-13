@@ -56,9 +56,9 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit\Framework\TestCase
      */
     public function setUp()
     {
-        $class = new ReflectionClass('Zend_Server_Reflection');
-        $method = $class->getMethod('reflectClass');
-        $parameters = $method->getParameters();
+        $class                = new ReflectionClass('Zend_Server_Reflection');
+        $method               = $class->getMethod('reflectClass');
+        $parameters           = $method->getParameters();
         $this->_parametersRaw = $parameters;
 
         $fParameters = array();

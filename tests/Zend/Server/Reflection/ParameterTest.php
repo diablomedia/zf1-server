@@ -35,7 +35,7 @@ class Zend_Server_Reflection_ParameterTest extends PHPUnit\Framework\TestCase
 {
     protected function _getParameter()
     {
-        $method = new ReflectionMethod('Zend_Server_Reflection_Parameter', 'setType');
+        $method     = new ReflectionMethod('Zend_Server_Reflection_Parameter', 'setType');
         $parameters = $method->getParameters();
         return $parameters[0];
     }

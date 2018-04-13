@@ -1,4 +1,7 @@
 parameters:
+    excludes_analyse:
+        - %rootDir%/../../../tests/*
+        - %rootDir%/../../../vendor/*
     ignoreErrors:
         - '#Casting to .+ something that.s already .+\.#'
         # ZF seems to believe that the getName method on ReflectionFunction may return "null", doesn't seem to unless given parameters

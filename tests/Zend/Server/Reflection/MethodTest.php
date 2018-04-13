@@ -102,6 +102,4 @@ class Zend_Server_Reflection_MethodTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($r->getName(), $u->getName());
         $this->assertEquals($r->getDeclaringClass()->getName(), $u->getDeclaringClass()->getName());
     }
-
-
 }

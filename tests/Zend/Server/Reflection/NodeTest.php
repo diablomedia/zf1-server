@@ -75,7 +75,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
     public function testCreateChild()
     {
         $parent = new Zend_Server_Reflection_Node('string');
-        $child = $parent->createChild('array');
+        $child  = $parent->createChild('array');
 
         $this->assertTrue($child instanceof Zend_Server_Reflection_Node);
         $this->assertTrue($parent === $child->getParent());
@@ -103,10 +103,10 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
     public function testGetChildren()
     {
         $parent = new Zend_Server_Reflection_Node('string');
-        $child = $parent->createChild('array');
+        $child  = $parent->createChild('array');
 
         $children = $parent->getChildren();
-        $types = array();
+        $types    = array();
         foreach ($children as $c) {
             $types[] = $c->getValue();
         }
@@ -133,7 +133,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
     public function testGetParent()
     {
         $parent = new Zend_Server_Reflection_Node('string');
-        $child = $parent->createChild('array');
+        $child  = $parent->createChild('array');
 
         $this->assertTrue(null === $parent->getParent());
         $this->assertTrue($parent === $child->getParent());
@@ -164,17 +164,17 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
      */
     public function testGetEndPoints()
     {
-        $root = new Zend_Server_Reflection_Node('root');
-        $child1 = $root->createChild('child1');
-        $child2 = $root->createChild('child2');
-        $child1grand1 = $child1->createChild(null);
-        $child1grand2 = $child1->createChild('child1grand2');
-        $child2grand1 = $child2->createChild('child2grand1');
-        $child2grand2 = $child2->createChild('child2grand2');
+        $root               = new Zend_Server_Reflection_Node('root');
+        $child1             = $root->createChild('child1');
+        $child2             = $root->createChild('child2');
+        $child1grand1       = $child1->createChild(null);
+        $child1grand2       = $child1->createChild('child1grand2');
+        $child2grand1       = $child2->createChild('child2grand1');
+        $child2grand2       = $child2->createChild('child2grand2');
         $child2grand2great1 = $child2grand2->createChild(null);
         $child2grand2great2 = $child2grand2->createChild('child2grand2great2');
 
-        $endPoints = $root->getEndPoints();
+        $endPoints      = $root->getEndPoints();
         $endPointsArray = array();
         foreach ($endPoints as $endPoint) {
             $endPointsArray[] = $endPoint->getValue();

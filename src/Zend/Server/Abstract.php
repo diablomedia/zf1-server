@@ -129,9 +129,9 @@ abstract class Zend_Server_Abstract implements Zend_Server_Interface
      */
     protected function _buildSignature(Zend_Server_Reflection_Function_Abstract $reflection, $class = null)
     {
-        $ns         = $reflection->getNamespace();
-        $name       = $reflection->getName();
-        $method     = empty($ns) ? $name : $ns . '.' . $name;
+        $ns     = $reflection->getNamespace();
+        $name   = $reflection->getName();
+        $method = empty($ns) ? $name : $ns . '.' . $name;
 
         if (!$this->_overwriteExistingMethods && $this->_table->hasMethod($method)) {
             throw new Zend_Server_Exception('Duplicate method registered: ' . $method);

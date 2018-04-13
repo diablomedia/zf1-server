@@ -131,7 +131,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit\Framework\TestCase
             'method' => 'bar',
         );
         $callback = new Zend_Server_Method_Callback($options);
-        $test = $callback->toArray();
+        $test     = $callback->toArray();
         $this->assertSame($options, $test);
     }
 

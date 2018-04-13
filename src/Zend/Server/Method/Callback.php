@@ -64,7 +64,7 @@ class Zend_Server_Method_Callback
      */
     public function __construct($options = null)
     {
-        if ((null !== $options) && is_array($options))  {
+        if ((null !== $options) && is_array($options)) {
             $this->setOptions($options);
         }
     }
@@ -189,7 +189,7 @@ class Zend_Server_Method_Callback
      */
     public function toArray()
     {
-        $type = $this->getType();
+        $type  = $this->getType();
         $array = array(
             'type' => $type,
         );

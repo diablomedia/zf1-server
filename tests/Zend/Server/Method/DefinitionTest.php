@@ -216,7 +216,7 @@ class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
             'invokeArguments' => array('foo', array('bar', 'baz')),
         );
         $definition = new Zend_Server_Method_Definition($options);
-        $test = $definition->toArray();
+        $test       = $definition->toArray();
         $this->assertEquals($options['name'], $test['name']);
         $this->assertEquals($options['callback'], $test['callback']);
         $this->assertEquals($options['prototypes'], $test['prototypes']);

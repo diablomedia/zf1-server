@@ -84,7 +84,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
      */
     public function testGetSet()
     {
-        $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
+        $r         = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
         $r->system = true;
         $this->assertTrue($r->system);
     }

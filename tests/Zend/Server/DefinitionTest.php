@@ -126,7 +126,7 @@ class Zend_Server_DefinitionTest extends PHPUnit\Framework\TestCase
     public function testDefinitionShouldSerializeToArray()
     {
         $method = array(
-            'name' => 'foo.bar',
+            'name'     => 'foo.bar',
             'callback' => array(
                 'type'     => 'function',
                 'function' => 'bar',
@@ -137,7 +137,7 @@ class Zend_Server_DefinitionTest extends PHPUnit\Framework\TestCase
                     'parameters' => array('string'),
                 ),
             ),
-            'methodHelp' => 'Foo Bar!',
+            'methodHelp'      => 'Foo Bar!',
             'invokeArguments' => array('foo'),
         );
         $definition = new Zend_Server_Definition();
@@ -154,7 +154,7 @@ class Zend_Server_DefinitionTest extends PHPUnit\Framework\TestCase
     public function testPassingOptionsToConstructorShouldSetObjectState()
     {
         $method = array(
-            'name' => 'foo.bar',
+            'name'     => 'foo.bar',
             'callback' => array(
                 'type'     => 'function',
                 'function' => 'bar',
@@ -165,12 +165,12 @@ class Zend_Server_DefinitionTest extends PHPUnit\Framework\TestCase
                     'parameters' => array('string'),
                 ),
             ),
-            'methodHelp' => 'Foo Bar!',
+            'methodHelp'      => 'Foo Bar!',
             'invokeArguments' => array('foo'),
         );
-        $options = array($method);
+        $options    = array($method);
         $definition = new Zend_Server_Definition($options);
-        $test = $definition->toArray();
+        $test       = $definition->toArray();
         $this->assertEquals(1, count($test));
         $test = array_shift($test);
         $this->assertEquals($method['name'], $test['name']);

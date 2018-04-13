@@ -106,7 +106,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
         $this->_reflection = $r;
 
         // Determine namespace
-        if (null !== $namespace){
+        if (null !== $namespace) {
             $this->setNamespace($namespace);
         }
 
@@ -253,8 +253,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
 
         if (!empty($docBlock)) {
             // Get help text
-            if (preg_match(':/\*\*\s*\r?\n\s*\*\s(.*?)\r?\n\s*\*(\s@|/):s', $docBlock, $matches))
-            {
+            if (preg_match(':/\*\*\s*\r?\n\s*\*\s(.*?)\r?\n\s*\*(\s@|/):s', $docBlock, $matches)) {
                 $helpText = $matches[1];
                 $helpText = preg_replace('/(^\s*\*\s)/m', '', $helpText);
                 $helpText = preg_replace('/\r?\n\s*\*\s*(\r?\n)*/s', "\n", $helpText);
@@ -262,14 +261,13 @@ abstract class Zend_Server_Reflection_Function_Abstract
             }
 
             // Get return type(s) and description
-            $return     = 'void';
+            $return = 'void';
             if (preg_match('/@return\s+(\S+)/', $docBlock, $matches)) {
                 $return = explode('|', $matches[1]);
-                if (preg_match('/@return\s+\S+\s+(.*?)(@|\*\/)/s', $docBlock, $matches))
-                {
-                    $value = $matches[1];
-                    $value = preg_replace('/\s?\*\s/m', '', $value);
-                    $value = preg_replace('/\s{2,}/', ' ', $value);
+                if (preg_match('/@return\s+\S+\s+(.*?)(@|\*\/)/s', $docBlock, $matches)) {
+                    $value      = $matches[1];
+                    $value      = preg_replace('/\s?\*\s/m', '', $value);
+                    $value      = preg_replace('/\s{2,}/', ' ', $value);
                     $returnDesc = trim($value);
                 }
             }
@@ -277,12 +275,11 @@ abstract class Zend_Server_Reflection_Function_Abstract
             // Get param types and description
             if (preg_match_all('/@param\s+([^\s]+)/m', $docBlock, $matches)) {
                 $paramTypesTmp = $matches[1];
-                if (preg_match_all('/@param\s+\S+\s+(\$\S+)\s+(.*?)(?=@|\*\/)/s', $docBlock, $matches))
-                {
+                if (preg_match_all('/@param\s+\S+\s+(\$\S+)\s+(.*?)(?=@|\*\/)/s', $docBlock, $matches)) {
                     $paramDesc = $matches[2];
                     foreach ($paramDesc as $key => $value) {
-                        $value = preg_replace('/\s?\*\s/m', '', $value);
-                        $value = preg_replace('/\s{2,}/', ' ', $value);
+                        $value           = preg_replace('/\s?\*\s/m', '', $value);
+                        $value           = preg_replace('/\s{2,}/', ' ', $value);
                         $paramDesc[$key] = trim($value);
                     }
                 }
@@ -334,7 +331,8 @@ abstract class Zend_Server_Reflection_Function_Abstract
                'Variable number of arguments is not supported for services (except optional parameters). '
              . 'Number of function arguments in ' . $function->getDeclaringClass()->getName() . '::'
              . $function->getName() . '() must correspond to actual number of arguments described in the '
-             . 'docblock.');
+             . 'docblock.'
+            );
         }
 
         $paramTypes = array();
@@ -363,7 +361,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
             return call_user_func_array(array($this->_reflection, $method), $args);
         }
 
-        throw new Zend_Server_Reflection_Exception('Invalid reflection method ("' .$method. '")');
+        throw new Zend_Server_Reflection_Exception('Invalid reflection method ("' . $method . '")');
     }
 
     /**
@@ -485,7 +483,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
     public function __wakeup()
     {
         if ($this->_reflection instanceof ReflectionMethod) {
-            $class = new ReflectionClass($this->_class);
+            $class             = new ReflectionClass($this->_class);
             $this->_reflection = new ReflectionMethod($class->newInstance(), $this->getName());
         } else {
             $this->_reflection = new ReflectionFunction($this->getName());
