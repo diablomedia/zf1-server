@@ -219,7 +219,7 @@ class Zend_Server_Method_Definition
     /**
      * Set object to use with method calls
      *
-     * @param  object $object
+     * @param  object|null $object
      * @return Zend_Server_Method_Definition
      */
     public function setObject($object)

@@ -224,7 +224,7 @@ class Zend_Server_Definition implements Countable, Iterator
     /**
      * Iterator: current item key
      *
-     * @return int|string
+     * @return int|string|null
      */
     public function key()
     {

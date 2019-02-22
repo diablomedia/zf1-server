@@ -82,6 +82,9 @@ abstract class Zend_Server_Reflection_Function_Abstract
      */
     protected $_prototypes = array();
 
+    /**
+     * @var string|array
+     */
     private $_return;
     private $_returnDesc;
     private $_paramDesc;
@@ -176,7 +179,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * Builds method signatures using the array of return types and the array of
      * parameters types
      *
-     * @param array $return Array of return types
+     * @param string|array $return Array of return types
      * @param string $returnDesc Return value description
      * @param array $paramTypes Array of arguments (each an array of types)
      * @param array $paramDesc Array of parameter descriptions
@@ -238,7 +241,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * comment. Determines method signatures using a combination of
      * ReflectionFunction and parsing of DocBlock @param and @return values.
      *
-     * @return array
+     * @return void
      */
     protected function _reflect()
     {
@@ -254,9 +257,10 @@ abstract class Zend_Server_Reflection_Function_Abstract
         if (!empty($docBlock)) {
             // Get help text
             if (preg_match(':/\*\*\s*\r?\n\s*\*\s(.*?)\r?\n\s*\*(\s@|/):s', $docBlock, $matches)) {
+                /** @var string $helpText */
                 $helpText = $matches[1];
-                $helpText = preg_replace('/(^\s*\*\s)/m', '', $helpText);
-                $helpText = preg_replace('/\r?\n\s*\*\s*(\r?\n)*/s', "\n", $helpText);
+                $helpText = (string) preg_replace('/(^\s*\*\s)/m', '', $helpText);
+                $helpText = (string) preg_replace('/\r?\n\s*\*\s*(\r?\n)*/s', "\n", $helpText);
                 $helpText = trim($helpText);
             }
 
@@ -265,9 +269,10 @@ abstract class Zend_Server_Reflection_Function_Abstract
             if (preg_match('/@return\s+(\S+)/', $docBlock, $matches)) {
                 $return = explode('|', $matches[1]);
                 if (preg_match('/@return\s+\S+\s+(.*?)(@|\*\/)/s', $docBlock, $matches)) {
+                    /** @var string $value */
                     $value      = $matches[1];
-                    $value      = preg_replace('/\s?\*\s/m', '', $value);
-                    $value      = preg_replace('/\s{2,}/', ' ', $value);
+                    $value      = (string) preg_replace('/\s?\*\s/m', '', $value);
+                    $value      = (string) preg_replace('/\s{2,}/', ' ', $value);
                     $returnDesc = trim($value);
                 }
             }
@@ -277,9 +282,10 @@ abstract class Zend_Server_Reflection_Function_Abstract
                 $paramTypesTmp = $matches[1];
                 if (preg_match_all('/@param\s+\S+\s+(\$\S+)\s+(.*?)(?=@|\*\/)/s', $docBlock, $matches)) {
                     $paramDesc = $matches[2];
+                    /** @var string $value */
                     foreach ($paramDesc as $key => $value) {
-                        $value           = preg_replace('/\s?\*\s/m', '', $value);
-                        $value           = preg_replace('/\s{2,}/', ' ', $value);
+                        $value           = (string) preg_replace('/\s?\*\s/m', '', $value);
+                        $value           = (string) preg_replace('/\s{2,}/', ' ', $value);
                         $paramDesc[$key] = trim($value);
                     }
                 }
@@ -328,7 +334,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
 
         if (count($paramTypesTmp) != $paramCount) {
             throw new Zend_Server_Reflection_Exception(
-               'Variable number of arguments is not supported for services (except optional parameters). '
+                'Variable number of arguments is not supported for services (except optional parameters). '
              . 'Number of function arguments in ' . $function->getDeclaringClass()->getName() . '::'
              . $function->getName() . '() must correspond to actual number of arguments described in the '
              . 'docblock.'

@@ -111,7 +111,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
             $types[] = $c->getValue();
         }
         $this->assertInternalType('array', $children);
-        $this->assertEquals(1, count($children), var_export($types, 1));
+        $this->assertCount(1, $children, var_export($types, 1));
         $this->assertTrue($child === $children[0]);
     }
 

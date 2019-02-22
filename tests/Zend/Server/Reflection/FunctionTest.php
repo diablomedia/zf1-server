@@ -96,7 +96,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $prototypes = $r->getPrototypes();
         $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(8, count($prototypes));
+        $this->assertCount(8, $prototypes);
 
         foreach ($prototypes as $p) {
             $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
@@ -111,7 +111,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $prototypes = $r->getPrototypes();
         $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(1, count($prototypes));
+        $this->assertCount(1, $prototypes);
 
         foreach ($prototypes as $p) {
             $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
@@ -125,13 +125,13 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $r        = new Zend_Server_Reflection_Function($function);
         $args     = $r->getInvokeArguments();
         $this->assertInternalType('array', $args);
-        $this->assertEquals(0, count($args));
+        $this->assertCount(0, $args);
 
         $argv = array('string1', 'string2');
         $r    = new Zend_Server_Reflection_Function($function, null, $argv);
         $args = $r->getInvokeArguments();
         $this->assertInternalType('array', $args);
-        $this->assertEquals(2, count($args));
+        $this->assertCount(2, $args);
         $this->assertTrue($argv === $args);
     }
 
@@ -153,12 +153,12 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $prototypes = $r->getPrototypes();
         $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(1, count($prototypes));
+        $this->assertCount(1, $prototypes);
 
         $proto  = $prototypes[0];
         $params = $proto->getParameters();
         $this->assertInternalType('array', $params);
-        $this->assertEquals(1, count($params));
+        $this->assertCount(1, $params);
         $this->assertEquals('string', $params[0]->getType());
     }
 
