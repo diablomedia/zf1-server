@@ -25,10 +25,6 @@ parameters:
         -
             message: '#Parameter \#1 \$function of function call_user_func_array expects callable\(\): .+ given\.#'
             path: %currentWorkingDirectory%/src/Zend/Server/Reflection/Parameter.php
-        # $dispatch is checked for `false` just above this
-        -
-            message: '#Parameter \#1 \$variable_representation of function unserialize expects string, string\|false given\.#'
-            path: %currentWorkingDirectory%/src/Zend/Server/Cache.php
         # Defensive coding, can't be enforced by PHP typehints
         - '#Result of && is always false\.#'
         - '#Strict comparison using !== between null and null will always evaluate to false\.#'
