@@ -83,6 +83,11 @@ abstract class Zend_Server_Reflection_Function_Abstract
     protected $_prototypes = array();
 
     /**
+     * @var string
+     */
+    protected $functionName;
+
+    /**
      * @var string|array
      */
     private $_return;
@@ -117,6 +122,8 @@ abstract class Zend_Server_Reflection_Function_Abstract
         if (is_array($argv)) {
             $this->_argv = $argv;
         }
+
+        $this->functionName = $r->getName();
 
         // If method call, need to store some info on the class
         if ($r instanceof ReflectionMethod) {
@@ -490,9 +497,21 @@ abstract class Zend_Server_Reflection_Function_Abstract
     {
         if ($this->_reflection instanceof ReflectionMethod) {
             $class             = new ReflectionClass($this->_class);
-            $this->_reflection = new ReflectionMethod($class->newInstance(), $this->getName());
+            $this->_reflection = new ReflectionMethod($class->newInstance(), $this->functionName);
         } else {
-            $this->_reflection = new ReflectionFunction($this->getName());
+            $this->_reflection = new ReflectionFunction($this->functionName);
         }
+    }
+
+    public function __sleep()
+    {
+        return array(
+            '_argv',
+            '_config',
+            '_class',
+            '_description',
+            '_namespace',
+            'functionName',
+        );
     }
 }

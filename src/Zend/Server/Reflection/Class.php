@@ -60,6 +60,16 @@ class Zend_Server_Reflection_Class
     protected $_reflection;
 
     /**
+     * @var mixed
+     */
+    private $argv;
+
+    /**
+     * @var string
+     */
+    private $reflectionClassName;
+
+    /**
      * Constructor
      *
      * Create array of dispatchable methods, each a
@@ -72,10 +82,17 @@ class Zend_Server_Reflection_Class
      */
     public function __construct(ReflectionClass $reflection, $namespace = null, $argv = false)
     {
-        $this->_reflection = $reflection;
+        $this->_reflection         = $reflection;
+        $this->reflectionClassName = $this->_reflection->getName();
         $this->setNamespace($namespace);
+        $this->argv = $argv;
 
-        foreach ($reflection->getMethods() as $method) {
+        $this->setMethods();
+    }
+
+    private function setMethods()
+    {
+        foreach ($this->_reflection->getMethods() as $method) {
             // Don't aggregate magic methods
             if ('__' == substr($method->getName(), 0, 2)) {
                 continue;
@@ -83,7 +100,7 @@ class Zend_Server_Reflection_Class
 
             if ($method->isPublic()) {
                 // Get signatures and description
-                $this->_methods[] = new Zend_Server_Reflection_Method($this, $method, $this->getNamespace(), $argv);
+                $this->_methods[] = new Zend_Server_Reflection_Method($this, $method, $this->getNamespace(), $this->argv);
             }
         }
     }
@@ -187,6 +204,12 @@ class Zend_Server_Reflection_Class
      */
     public function __wakeup()
     {
-        $this->_reflection = new ReflectionClass($this->getName());
+        $this->_reflection = new ReflectionClass($this->reflectionClassName);
+        $this->setMethods();
+    }
+
+    public function __sleep()
+    {
+        return array('_namespace', '_config', 'argv', 'reflectionClassName');
     }
 }
