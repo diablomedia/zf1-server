@@ -90,6 +90,9 @@ class Zend_Server_Reflection_Class
         $this->setMethods();
     }
 
+    /**
+     * @return void
+     */
     private function setMethods()
     {
         foreach ($this->_reflection->getMethods() as $method) {

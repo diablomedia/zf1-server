@@ -1,6 +1,8 @@
 parameters:
-    level: 7
+    level: 8
     inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
     paths:
         - ./
     excludes_analyse:
@@ -9,8 +11,6 @@ parameters:
     ignoreErrors:
         # ZF seems to believe that the getName method on ReflectionFunction may return "null", doesn't seem to unless given parameters
         - '#Strict comparison using === between null and string will always evaluate to false\.#'
-        # This seems intentional, they're close but not quite the same
-        - '#Zend_Server_Reflection_Method::__construct\(\) does not call parent constructor from Zend_Server_Reflection_Function_Abstract\.#'
         # This might be a bug, I didn't look at all of the code above it, but $_reflection could be ReflectionFunction or ReflectionMethod
         # only ReflectionMethod has this method on it
         - '#Call to an undefined method ReflectionFunction\|ReflectionMethod::getDeclaringClass\(\)\.#'
@@ -29,3 +29,10 @@ parameters:
         # Defensive coding, can't be enforced by PHP typehints
         - '#Result of && is always false\.#'
         - '#Strict comparison using !== between null and null will always evaluate to false\.#'
+        - '#Parameter \#1 \$argument of class ReflectionClass constructor expects class-string<T of object>\|T of object, .+ given\.#'
+        -
+            message: '#Parameter \#1 \$args of method ReflectionClass<mixed>::newInstanceArgs\(\) expects array<int, mixed>, array given\.#'
+            path: './src/Zend/Server/Abstract.php'
+        -
+            message: '#Parameter \#3 \$argv of class Zend_Server_Reflection_Function constructor expects array, array\|false\|null given\.#'
+            path: './src/Zend/Server/Reflection.php'

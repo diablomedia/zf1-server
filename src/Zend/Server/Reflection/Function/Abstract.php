@@ -91,15 +91,33 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * @var string|array
      */
     private $_return;
+
+    /**
+     * @var string
+     */
     private $_returnDesc;
+
+    /**
+     * @var array
+     */
     private $_paramDesc;
+
+    /**
+     * @var array
+     */
     private $_sigParams;
+
+    /**
+     * @var int
+     */
     private $_sigParamsDepth;
 
     /**
      * Constructor
      *
      * @param ReflectionFunction|ReflectionMethod $r
+     * @param string $namespace
+     * @param array $argv
      */
     public function __construct(Reflector $r, $namespace = null, $argv = array())
     {
@@ -190,7 +208,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * @param string $returnDesc Return value description
      * @param array $paramTypes Array of arguments (each an array of types)
      * @param array $paramDesc Array of parameter descriptions
-     * @return array
+     * @return void
      */
     protected function _buildSignatures($return, $returnDesc, $paramTypes, $paramDesc)
     {
