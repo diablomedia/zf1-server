@@ -39,7 +39,7 @@ class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->definition = new Zend_Server_Method_Definition();
     }
@@ -50,7 +50,7 @@ class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -127,7 +127,7 @@ class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
     public function testInvokeArgumentsShouldBeEmptyArrayByDefault()
     {
         $args = $this->definition->getInvokeArguments();
-        $this->assertInternalType('array', $args);
+        $this->assertIsArray($args);
         $this->assertEmpty($args);
     }
 
@@ -142,7 +142,7 @@ class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
     public function testPrototypesShouldBeEmptyArrayByDefault()
     {
         $prototypes = $this->definition->getPrototypes();
-        $this->assertInternalType('array', $prototypes);
+        $this->assertIsArray($prototypes);
         $this->assertEmpty($prototypes);
     }
 

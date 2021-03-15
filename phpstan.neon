@@ -31,8 +31,5 @@ parameters:
         - '#Strict comparison using !== between null and null will always evaluate to false\.#'
         - '#Parameter \#1 \$argument of class ReflectionClass constructor expects class-string<T of object>\|T of object, .+ given\.#'
         -
-            message: '#Parameter \#1 \$args of method ReflectionClass<mixed>::newInstanceArgs\(\) expects array<int, mixed>, array given\.#'
-            path: './src/Zend/Server/Abstract.php'
-        -
             message: '#Parameter \#3 \$argv of class Zend_Server_Reflection_Function constructor expects array, array\|false\|null given\.#'
             path: './src/Zend/Server/Reflection.php'

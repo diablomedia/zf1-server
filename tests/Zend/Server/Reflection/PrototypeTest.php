@@ -54,7 +54,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit\Framework\TestCase
     /**
      * Setup environment
      */
-    public function setUp()
+    public function setUp(): void
     {
         $class                = new ReflectionClass('Zend_Server_Reflection');
         $method               = $class->getMethod('reflectClass');
@@ -73,7 +73,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit\Framework\TestCase
     /**
      * Teardown environment
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->_r);
         unset($this->_parameters);
@@ -146,7 +146,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit\Framework\TestCase
         $r = new Zend_Server_Reflection_Prototype($this->_r->getReturnValue(), $this->_parameters);
         $p = $r->getParameters();
 
-        $this->assertInternalType('array', $p);
+        $this->assertIsArray($p);
         foreach ($p as $parameter) {
             $this->assertTrue($parameter instanceof Zend_Server_Reflection_Parameter);
         }

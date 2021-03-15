@@ -39,7 +39,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->callback = new Zend_Server_Method_Callback();
     }
@@ -50,7 +50,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -117,7 +117,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit\Framework\TestCase
                        ->setMethod('bar')
                        ->setType('instance');
         $test = $this->callback->toArray();
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertEquals('Foo', $test['class']);
         $this->assertEquals('bar', $test['method']);
         $this->assertEquals('instance', $test['type']);

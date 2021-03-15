@@ -76,8 +76,8 @@ class Zend_Server_Reflection_ParameterTest extends PHPUnit\Framework\TestCase
         $r = new Zend_Server_Reflection_Parameter($this->_getParameter());
 
         // just test a few call proxies...
-        $this->assertInternalType('bool', $r->allowsNull());
-        $this->assertInternalType('bool', $r->isOptional());
+        $this->assertIsBool($r->allowsNull());
+        $this->assertIsBool($r->isOptional());
     }
 
     /**

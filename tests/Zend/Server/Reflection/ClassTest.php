@@ -52,7 +52,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('', $r->getNamespace());
 
         $methods = $r->getMethods();
-        $this->assertInternalType('array', $methods);
+        $this->assertIsArray($methods);
         foreach ($methods as $m) {
             $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
         }
@@ -75,7 +75,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
     public function test__call()
     {
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
-        $this->assertInternalType('string', $r->getName());
+        $this->assertIsString($r->getName());
         $this->assertEquals('Zend_Server_Reflection', $r->getName());
     }
 
@@ -101,7 +101,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
 
         $methods = $r->getMethods();
-        $this->assertInternalType('array', $methods);
+        $this->assertIsArray($methods);
         foreach ($methods as $m) {
             $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
         }
