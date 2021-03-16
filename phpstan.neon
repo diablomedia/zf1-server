@@ -33,3 +33,8 @@ parameters:
         -
             message: '#Parameter \#3 \$argv of class Zend_Server_Reflection_Function constructor expects array, array\|false\|null given\.#'
             path: './src/Zend/Server/Reflection.php'
+        # This method does exist, just not documented apparently
+        -
+            message: '#Call to an undefined method ReflectionType::getName\(\)\.#'
+            path: './src/Zend/Server/Reflection/Function/Abstract.php'
+            count: 1

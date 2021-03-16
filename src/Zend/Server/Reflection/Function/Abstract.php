@@ -323,7 +323,8 @@ abstract class Zend_Server_Reflection_Function_Abstract
             $paramTypesTmp = array();
             foreach ($parameters as $i => $param) {
                 $paramType = 'mixed';
-                if ($param->isArray()) {
+                $type      = $param->getType();
+                if ($type && $type->getName() === 'array') {
                     $paramType = 'array';
                 }
                 $paramTypesTmp[$i] = $paramType;
