@@ -86,6 +86,21 @@ class Zend_Server_Reflection_Parameter
         throw new Zend_Server_Reflection_Exception('Invalid reflection method');
     }
 
+    public function getClass(): ?ReflectionClass
+    {
+        $type = $this->_reflection->getType();
+
+        if ($type === null) {
+            return null;
+        }
+
+        if ($type->isBuiltin()) {
+            return null;
+        }
+
+        return new ReflectionClass($type->getName());
+    }
+
     /**
      * Retrieve parameter type
      *
