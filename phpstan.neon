@@ -1,3 +1,5 @@
+includes:
+    - phpstan-php8.php
 parameters:
     level: 8
     inferPrivatePropertyTypeFromConstructor: true
