@@ -7,7 +7,7 @@ parameters:
     checkGenericClassInNonGenericObjectType: false
     paths:
         - ./
-    excludes_analyse:
+    excludePaths:
         - %rootDir%/../../../tests/*
         - %rootDir%/../../../vendor/*
     ignoreErrors:
