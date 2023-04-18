@@ -33,6 +33,8 @@
  */
 class Zend_Server_Method_ParameterTest extends PHPUnit\Framework\TestCase
 {
+    protected $parameter;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.

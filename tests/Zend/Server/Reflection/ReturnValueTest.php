@@ -47,7 +47,7 @@ class Zend_Server_Reflection_ReturnValueTest extends PHPUnit\Framework\TestCase
     public function test__construct()
     {
         $obj = new Zend_Server_Reflection_ReturnValue();
-        $this->assertTrue($obj instanceof Zend_Server_Reflection_ReturnValue);
+        $this->assertInstanceOf(Zend_Server_Reflection_ReturnValue::class, $obj);
     }
 
     /**

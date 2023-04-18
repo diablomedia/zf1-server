@@ -57,7 +57,7 @@ class Zend_Server_Reflection_ParameterTest extends PHPUnit\Framework\TestCase
         $parameter = $this->_getParameter();
 
         $reflection = new Zend_Server_Reflection_Parameter($parameter);
-        $this->assertTrue($reflection instanceof Zend_Server_Reflection_Parameter);
+        $this->assertInstanceOf(Zend_Server_Reflection_Parameter::class, $reflection);
     }
 
     /**

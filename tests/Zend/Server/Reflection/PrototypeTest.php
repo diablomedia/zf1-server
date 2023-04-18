@@ -148,7 +148,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit\Framework\TestCase
 
         $this->assertIsArray($p);
         foreach ($p as $parameter) {
-            $this->assertTrue($parameter instanceof Zend_Server_Reflection_Parameter);
+            $this->assertInstanceOf(Zend_Server_Reflection_Parameter::class, $parameter);
         }
 
         $this->assertTrue($p === $this->_parameters);

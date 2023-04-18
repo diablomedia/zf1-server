@@ -40,14 +40,14 @@ class Zend_Server_ReflectionTest extends PHPUnit\Framework\TestCase
     {
         try {
             $reflection = Zend_Server_Reflection::reflectClass('Zend_Server_Reflection_testClass');
-            $this->assertTrue($reflection instanceof Zend_Server_Reflection_Class);
+            $this->assertInstanceOf(Zend_Server_Reflection_Class::class, $reflection);
         } catch (Exception $e) {
             $this->fail('Failed to perform class reflection: ' . $e->getMessage());
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectClass(new Zend_Server_Reflection_testClass());
-            $this->assertTrue($reflection instanceof Zend_Server_Reflection_Class);
+            $this->assertInstanceOf(Zend_Server_Reflection_Class::class, $reflection);
         } catch (Exception $e) {
             $this->fail('Failed to perform object reflection: ' . $e->getMessage());
         }
@@ -83,7 +83,7 @@ class Zend_Server_ReflectionTest extends PHPUnit\Framework\TestCase
     {
         try {
             $reflection = Zend_Server_Reflection::reflectFunction('Zend_Server_Reflection_testFunction');
-            $this->assertTrue($reflection instanceof Zend_Server_Reflection_Function);
+            $this->assertInstanceOf(Zend_Server_Reflection_Function::class, $reflection);
         } catch (Exception $e) {
             $this->fail('Function reflection failed: ' . $e->getMessage());
         }

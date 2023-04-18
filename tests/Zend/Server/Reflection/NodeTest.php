@@ -39,14 +39,14 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
     public function test__construct()
     {
         $node = new Zend_Server_Reflection_Node('string');
-        $this->assertTrue($node instanceof Zend_Server_Reflection_Node);
+        $this->assertInstanceOf(Zend_Server_Reflection_Node::class, $node);
         $this->assertEquals('string', $node->getValue());
         $this->assertTrue(null === $node->getParent());
         $children = $node->getChildren();
         $this->assertEmpty($children);
 
         $child = new Zend_Server_Reflection_Node('array', $node);
-        $this->assertTrue($child instanceof Zend_Server_Reflection_Node);
+        $this->assertInstanceOf(Zend_Server_Reflection_Node::class, $child);
         $this->assertEquals('array', $child->getValue());
         $this->assertTrue($node === $child->getParent());
         $children = $child->getChildren();
@@ -77,7 +77,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit\Framework\TestCase
         $parent = new Zend_Server_Reflection_Node('string');
         $child  = $parent->createChild('array');
 
-        $this->assertTrue($child instanceof Zend_Server_Reflection_Node);
+        $this->assertInstanceOf(Zend_Server_Reflection_Node::class, $child);
         $this->assertTrue($parent === $child->getParent());
         $children = $parent->getChildren();
         $this->assertTrue($child === $children[0]);

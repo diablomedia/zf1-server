@@ -37,8 +37,8 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
     {
         $function = new ReflectionFunction('Zend_Server_Reflection_FunctionTest_function');
         $r        = new Zend_Server_Reflection_Function($function);
-        $this->assertTrue($r instanceof Zend_Server_Reflection_Function);
-        $this->assertTrue($r instanceof Zend_Server_Reflection_Function_Abstract);
+        $this->assertInstanceOf(Zend_Server_Reflection_Function::class, $r);
+        $this->assertInstanceOf(Zend_Server_Reflection_Function_Abstract::class, $r);
         $params = $r->getParameters();
         try {
             $r = new Zend_Server_Reflection_Function($params[0]);
@@ -99,7 +99,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $this->assertCount(8, $prototypes);
 
         foreach ($prototypes as $p) {
-            $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
+            $this->assertInstanceOf(Zend_Server_Reflection_Prototype::class, $p);
         }
     }
 
@@ -114,7 +114,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $this->assertCount(1, $prototypes);
 
         foreach ($prototypes as $p) {
-            $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
+            $this->assertInstanceOf(Zend_Server_Reflection_Prototype::class, $p);
         }
     }
 
@@ -141,7 +141,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit\Framework\TestCase
         $r        = new Zend_Server_Reflection_Function($function);
         $s        = serialize($r);
         $u        = unserialize($s);
-        $this->assertTrue($u instanceof Zend_Server_Reflection_Function);
+        $this->assertInstanceOf(Zend_Server_Reflection_Function::class, $u);
         $this->assertEquals('', $u->getNamespace());
     }
 

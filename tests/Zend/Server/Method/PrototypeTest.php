@@ -33,6 +33,8 @@
  */
 class Zend_Server_Method_PrototypeTest extends PHPUnit\Framework\TestCase
 {
+    protected $prototype;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -118,7 +120,7 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit\Framework\TestCase
         $this->prototype->addParameters(array('string', 'array'));
         $parameters = $this->prototype->getParameterObjects();
         foreach ($parameters as $parameter) {
-            $this->assertTrue($parameter instanceof Zend_Server_Method_Parameter);
+            $this->assertInstanceOf(Zend_Server_Method_Parameter::class, $parameter);
         }
     }
 

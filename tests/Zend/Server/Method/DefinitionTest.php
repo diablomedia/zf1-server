@@ -33,6 +33,8 @@
  */
 class Zend_Server_Method_DefinitionTest extends PHPUnit\Framework\TestCase
 {
+    protected $definition;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.

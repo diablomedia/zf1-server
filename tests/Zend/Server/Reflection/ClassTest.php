@@ -48,13 +48,13 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
     public function test__construct()
     {
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
-        $this->assertTrue($r instanceof Zend_Server_Reflection_Class);
+        $this->assertInstanceOf(Zend_Server_Reflection_Class::class, $r);
         $this->assertEquals('', $r->getNamespace());
 
         $methods = $r->getMethods();
         $this->assertIsArray($methods);
         foreach ($methods as $m) {
-            $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
+            $this->assertInstanceOf(Zend_Server_Reflection_Method::class, $m);
         }
 
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'), 'namespace');
@@ -103,7 +103,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
         $methods = $r->getMethods();
         $this->assertIsArray($methods);
         foreach ($methods as $m) {
-            $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
+            $this->assertInstanceOf(Zend_Server_Reflection_Method::class, $m);
         }
     }
 
@@ -131,7 +131,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit\Framework\TestCase
         $s = serialize($r);
         $u = unserialize($s);
 
-        $this->assertTrue($u instanceof Zend_Server_Reflection_Class);
+        $this->assertInstanceOf(Zend_Server_Reflection_Class::class, $u);
         $this->assertEquals('', $u->getNamespace());
         $this->assertEquals($r->getName(), $u->getName());
         $rMethods = $r->getMethods();
