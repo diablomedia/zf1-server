@@ -52,10 +52,10 @@ class Zend_Server_Reflection_Node
      * Constructor
      *
      * @param mixed $value
-     * @param Zend_Server_Reflection_Node $parent Optional
+     * @param Zend_Server_Reflection_Node|null $parent Optional
      * @return void
      */
-    public function __construct($value, Zend_Server_Reflection_Node $parent = null)
+    public function __construct($value, Zend_Server_Reflection_Node|null $parent = null)
     {
         $this->_value = $value;
         if (null !== $parent) {
